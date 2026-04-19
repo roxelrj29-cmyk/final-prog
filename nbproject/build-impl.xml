@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EventSystem-impl" basedir="..">
+    <property file="nbproject/project.properties"/>
+
+    <target name="-pre-init"/>
+    <target name="-init-private"/>
+    <target name="-init-user"/>
+    <target name="-init-project"/>
+    <target name="-do-init"/>
+    <target name="-post-init"/>
+    <target name="-init-check"/>
+
+    <target name="-init-macrodef-property"/>
+    <target name="-init-macrodef-javac-with-processors"/>
+    <target name="-init-macrodef-javac-without-processors"/>
+    <target name="-init-macrodef-javac"/>
+    <target name="-init-macrodef-junit"/>
+    <target name="-init-macrodef-junit-debug"/>
+    <target name="-init-macrodef-nbjpda"/>
+    <target name="-init-macrodef-debug"/>
+    <target name="-init-macrodef-java"/>
+    <target name="-init-macrodef-copylibs"/>
+    <target name="-init-macrodef-import"/>
+
+    <target name="default" depends="jar" description="Build and package the project."/>
+
+    <target name="-init" depends="-pre-init,-init-private,-init-user,-init-project,-do-init,-post-init,-init-check"/>
+
+    <target name="init" depends="-init"/>
+
+    <target name="-do-clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean" depends="-init,-do-clean" description="Clean build products."/>
+
+    <target name="-do-compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}"
+               classpath="${javac.classpath}"
+               source="${javac.source}" target="${javac.target}"
+               encoding="${source.encoding}" includeantruntime="false"/>
+    </target>
+
+    <target name="compile" depends="-init,-do-compile" description="Compile project sources."/>
+
+    <target name="-do-jar">
+        <mkdir dir="${dist.dir}"/>
+        <jar jarfile="${dist.jar}" manifest="${manifest.file}">
+            <fileset dir="${build.classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="jar" depends="compile,-do-jar" description="Package project."/>
+
+    <target name="run" depends="compile" description="Run project.">
+        <java classname="${main.class}" classpath="${run.classpath}" fork="true"/>
+    </target>
+</project>
