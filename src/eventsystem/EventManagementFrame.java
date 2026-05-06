@@ -48,11 +48,30 @@ public class EventManagementFrame extends JFrame {
         header.setBackground(new Color(30, 80, 160));
         header.setBounds(0, 0, 1000, 60);
         add(header);
+          try {
+   String logoPath = "C:/Users/roxel john/Documents/NetBeansProjects/EventSystem/src/images/cropped-CCS.png";
+    java.io.File imgFile = new java.io.File(logoPath);
+    System.out.println("Looking for logo at: " + imgFile.getAbsolutePath());
+
+    if (imgFile.exists()) {
+        Image scaledImage = new ImageIcon(imgFile.getAbsolutePath())
+                .getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH);
+        JLabel lblLogo = new JLabel(new ImageIcon(scaledImage));
+        lblLogo.setBounds(10, 5, 55, 55);
+        header.add(lblLogo);
+        System.out.println("Logo loaded successfully!");
+    } else {
+        System.out.println("File does not exist at: " + imgFile.getAbsolutePath());
+    }
+} catch (Exception ex) {
+    System.err.println("Logo load error: " + ex.getMessage());
+}
+
 
         JLabel lblTitle = new JLabel("Event Management");
         lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
         lblTitle.setForeground(Color.WHITE);
-        lblTitle.setBounds(20, 15, 400, 30);
+        lblTitle.setBounds(75, 15, 400, 30);
         header.add(lblTitle);
 
         btnBack = new JButton("← Back to Dashboard");
