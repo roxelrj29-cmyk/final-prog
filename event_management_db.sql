@@ -53,8 +53,20 @@ CREATE TABLE IF NOT EXISTS registrations (
 -- ============================================================
 INSERT INTO users (username, password, full_name)
 VALUES (
-    'admin',
-    '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a',
-    'Administrator'
+    'roxel',
+    'cb8c93b371ea5db295e290425768ff8beb62239bd1cf416152ef91c104f9d45c',
+    'Roxel'
+)
+INSERT INTO users (username, password, full_name)
+VALUES (
+    'lycah',
+    'cd4a852c82423fc7ea71ee1f03f4936784a83a476a0c560c94bae8e5d0fbe078',
+    'Lycah'
+)
+    INSERT INTO users (username, password, full_name)
+VALUES (
+    'iverson',
+    'd5c89bdeefe980a57eedb2a34a4ef4ed646b6a0002ab11e711b282bb498768cf',
+    'Iverson'
 )
 ON DUPLICATE KEY UPDATE username = username;
